@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chama Finance Trust - Investments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button onclick="location.href='/home'">Home</button>
+        <button onclick="location.href='/savings'">Savings</button>
+        <button onclick="location.href='/loans'">Loans</button>
+        <button onclick="location.href='/investments'">Invest</button>
+        <button onclick="location.href='/change_password'">Change Password</button>
+        <button onclick="location.href='/logout'">Logout</button>
+        {% if is_cluster_member %}
+        <button onclick="location.href='/emergency'">Emergency Funds</button>
+        {% endif %}
+    </nav>
+    <main>
+        <h2>Investment Opportunities</h2>
+        <div class="investment-option">
+            <h3>Low-Risk Bonds</h3>
+            <p>Potential Revenue: 5-7% per annum</p>
+            <button onclick="alert('Details for Low-Risk Bonds')">View Details</button>
+        </div>
+        <div class="investment-option">
+            <h3>Real Estate Partnerships</h3>
+            <p>Potential Revenue: 8-12% per annum (longer term)</p>
+            <button onclick="alert('Details for Real Estate Partnerships')">View Details</button>
+        </div>
+        <div class="investment-option">
+            <h3>Agricultural Investments</h3>
+            <p>Potential Revenue: Varies based on crop and market conditions</p>
+            <button onclick="alert('Details for Agricultural Investments')">View Details</button>
+        </div>
+        </main>
+</body>
+</html>

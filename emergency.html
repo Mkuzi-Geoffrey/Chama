@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chama Finance Trust - Emergency Funds</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button onclick="location.href='/home'">Home</button>
+        <button onclick="location.href='/savings'">Savings</button>
+        <button onclick="location.href='/loans'">Loans</button>
+        <button onclick="location.href='/balance'">Balance</button>
+        <button onclick="location.href='/investments'">Invest</button>
+        <button onclick="location.href='/emergency'">Emergency Funds</button>
+        <button onclick="location.href='/change_password'">Change Password</button>
+        <button onclick="location.href='/logout'">Logout</button>
+    </nav>
+    <main>
+        <h2>Emergency Funds</h2>
+        <p>Total Emergency Funds: {{ total_emergency_funds }}</p>
+        <button onclick="document.getElementById('cash-out-form').style.display='block'">Cash Out</button>
+
+        <div id="cash-out-form" style="display: none;">
+            <h3>Cash Out Emergency Funds</h3>
+            <form action="/cash_out_emergency" method="POST">
+                <div>
+                    <label for="amount">Amount to Cash Out:</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <div>
+                    <label for="payment_method">Payment Method:</label>
+                    <select id="payment_method" name="payment_method">
+                        <option value="mobile_money">Mobile Money</option>
+                        <option value="atm">ATM</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Cash Out Request</button>
+                <button type="button" onclick="document.getElementById('cash-out-form').style.display='none'">Cancel</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

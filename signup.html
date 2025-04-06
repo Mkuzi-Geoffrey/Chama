@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chama Finance Trust - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form id="signup-form" action="/register" method="POST">
+        <div>
+            <label for="full_names">Full Names:</label>
+            <input type="text" id="full_names" name="full_names" required>
+        </div>
+        <div>
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number" required>
+        </div>
+        <div>
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div>
+            <label for="account_type">Account Type:</label>
+            <select id="account_type" name="account_type">
+                <option value="individual">Individual Account</option>
+                <option value="cluster">Cluster Group</option>
+            </select>
+        </div>
+        <div id="cluster-fields" style="display:none;">
+            <label for="cluster_name">Cluster Name (if joining/creating):</label>
+            <input type="text" id="cluster_name" name="cluster_name">
+        </div>
+        <div>
+            <h3>Security Questions</h3>
+            <div>
+                <label for="security_question1">Question 1:</label>
+                <input type="text" id="security_question1" name="security_question1" required>
+                <input type="text" id="security_answer1" name="security_answer1" required>
+            </div>
+            <div>
+                <label for="security_question2">Question 2:</label>
+                <input type="text" id="security_question2" name="security_question2" required>
+                <input type="text" id="security_answer2" name="security_answer2" required>
+            </div>
+            <div>
+                <label for="security_question3">Question 3:</label>
+                <input type="text" id="security_question3" name="security_question3" required>
+                <input type="text" id="security_answer3" name="security_answer3" required>
+            </div>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <script>
+        document.getElementById('account_type').addEventListener('change', function() {
+            const clusterFields = document.getElementById('cluster-fields');
+            if (this.value === 'cluster') {
+                clusterFields.style.display = 'block';
+            } else {
+                clusterFields.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

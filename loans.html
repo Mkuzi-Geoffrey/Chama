@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chama Finance Trust - Loans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        </nav>
+    <main>
+        <h2>Loans</h2>
+        <button onclick="location.href='/take_loan'">Take a Loan</button>
+        <button onclick="location.href='/pay_loan'">Pay Loan</button>
+        <button onclick="location.href='/check_loan_balance'">Check Loan Balance</button>
+
+        <div id="take-loan-form" style="display: none;">
+            <h3>Loan Eligibility Form</h3>
+            <form action="/request_loan" method="POST">
+                <button type="submit">Submit Eligibility</button>
+            </form>
+        </div>
+
+        <div id="loan-details" style="display: none;">
+            <h3>Loan Details</h3>
+            <p>Eligible Loan Amount: {{ eligible_loan_amount }}</p>
+            <p>Interest Rate: {{ loan_interest_rate }}% per annum</p>
+            <p>Payment Period (Months): <input type="number" name="loan_term" value="12"></p>
+            <p>Loan Amount to Acquire: <input type="number" name="loan_amount"></p>
+            <button type="submit">Apply for Loan</button>
+        </div>
+
+        <div id="pay-loan-form" style="display: none;">
+            <h3>Pay Loan</h3>
+            <p>Current Loan Balance: {{ current_loan_balance }}</p>
+            <label for="payment_amount">Payment Amount:</label>
+            <input type="number" id="payment_amount" name="payment_amount" required>
+            <button type="submit">Make Payment</button>
+        </div>
+
+        <div id="loan-balance-info" style="display: none;">
+            <h3>Loan Balance</h3>
+            <p>Loan Balance: {{ loan_balance }}</p>
+            <p>Payment Period: {{ loan_term_months }} months</p>
+            <p>Due Date: {{ loan_due_date }}</p>
+        </div>
+    </main>
+    <script>
+        // JavaScript to toggle visibility of loan sections
+        const takeLoanBtn = document.querySelector('button[onclick*="/take_loan"]');
+        const payLoanBtn = document.querySelector('button[onclick*="/pay_loan"]');
+        const checkBalanceBtn = document.querySelector('button[onclick*="/check_loan_balance"]');
+        const takeLoanForm = document.getElementById('take-loan-form');
+        const loanDetails = document.getElementById('loan-details');
+        const payLoanForm = document.getElementById('pay-loan-form');
+        const loanBalanceInfo = document.getElementById('loan-balance-info');
+
+        takeLoanBtn.addEventListener('click', () => {
+            takeLoanForm.style.display = 'block';
+            loanDetails.style.display = 'none';
+            payLoanForm.style.display = 'none';
+            loanBalanceInfo.style.display = 'none';
+        });
+
+        payLoanBtn.addEventListener('click', () => {
+            takeLoanForm.style.display = 'none';
+            loanDetails.style.display = 'none';
+            payLoanForm.style.display = 'block';
+            loanBalanceInfo.style.display = 'none';
+        });
+
+        checkBalanceBtn.addEventListener('click', () => {
+            takeLoanForm.style.display = 'none';
+            loanDetails.style.display = 'none';
+            payLoanForm.style.display = 'none';
+            loanBalanceInfo.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
